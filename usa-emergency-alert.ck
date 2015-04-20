@@ -172,6 +172,7 @@ fun void afsk_bits( int bits[] )
 if( year >= 1997 )
 {
   afsk_same_message("ZCZC-XXX-DMO-000000+0000-0000000-XXXXXXXX-");
+  afsk_same_message("NNNN");
 }
 
 SinOsc alert1;
