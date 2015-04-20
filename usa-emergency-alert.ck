@@ -30,6 +30,13 @@ http://www.gpo.gov/fdsys/pkg/FR-2012-03-22/pdf/2012-6601.pdf (77 FR 16701)
 
 SinOsc same1;
 
+// "All frequency components outside 200 to 4000 Hz shall be attenuated by 40
+// dB or more with respect to the output levels of the mark or space
+// frequencies."
+same1 => HPF highpass => LPF lowpass => dac;
+200 => highpass.freq;
+4000 => lowpass.freq;
+
 fun void afsk_same_message1( string message )
 {
   int dict[128][8];
@@ -144,18 +151,11 @@ fun void afsk_same_message1( string message )
   }
 
   0 => same1.gain;
-  0.96::second => now;
+  1::second => now;
 }
 
 fun void afsk_same_message( string message )
 {
-  // "All frequency components outside 200 to 4000 Hz shall be attenuated by 40
-  // dB or more with respect to the output levels of the mark or space
-  // frequencies."
-  same1 => HPF highpass => LPF lowpass => dac;
-  200 => highpass.freq;
-  4000 => lowpass.freq;
-
   // Repeat three times
   for (1 => int i; i <= 3; i++)
   {
