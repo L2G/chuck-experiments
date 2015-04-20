@@ -5,10 +5,13 @@ venerable Valentino (Major Records) sound effects library.
 
 */
 
+1200.0 => float lower;
+3200.0 => float upper;
+
 SinOsc s => dac;
 
 while( true ) {
-  1200 + Math.random2(0, 3) * 2000.0 / 3.0 => s.freq;
+  lower + Math.random2(0, 3) * (upper - lower) / 3.0 => s.freq;
   1 => s.gain; 45::ms => now;
   0 => s.gain; 45::ms => now;
 }
