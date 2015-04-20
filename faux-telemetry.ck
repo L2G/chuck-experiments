@@ -5,7 +5,8 @@ venerable Valentino (Major Records) sound effects library.
 
 */
 
-SinOsc s => Dyno env => dac;
+SinOsc s => dac;
+
 while( true ) {
   1200 + Math.random2(0, 3) * 2000.0 / 3.0 => s.freq;
   1 => s.gain; 45::ms => now;
