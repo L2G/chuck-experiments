@@ -155,7 +155,8 @@ fun void afsk_same_message( string message )
 
 fun void afsk_bits( int bits[] )
 {
-  // mark and space frequencies in SAME's AFSK scheme
+  // Frequencies for SAME's AFSK scheme.  These are chosen to form exactly 3
+  // cycles (space) or 4 cycles (mark) over a span of 1920 microseconds.
   [ 6250.0/4.0, 6250.0/3.0 ] @=> float space_and_mark[];
 
   // Least-significant bit first, hence reversed order
