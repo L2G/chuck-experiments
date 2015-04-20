@@ -26,7 +26,7 @@ https://en.wikipedia.org/w/index.php?title=Specific_Area_Message_Encoding&oldid=
 
 /***** End settings *****/
 
-SinOsc same1 => dac;
+SinOsc same1;
 
 fun void afsk_same_message1( string message )
 {
@@ -147,10 +147,12 @@ fun void afsk_same_message1( string message )
 
 fun void afsk_same_message( string message )
 {
+  same1 => dac;
   for (1 => int i; i <= 3; i++)
   {
     afsk_same_message1( message );
   }
+  same1 =< dac;
 }
 
 fun void afsk_bits( int bits[] )
@@ -172,7 +174,6 @@ fun void afsk_bits( int bits[] )
 if( year >= 1997 )
 {
   afsk_same_message("ZCZC-XXX-DMO-000000+0000-0000000-XXXXXXXX-");
-  afsk_same_message("NNNN");
 }
 
 SinOsc alert1;
@@ -190,5 +191,15 @@ if( year >= 1963 )
 }
 
 // Play alert
+15::second => now;
 
-// 15::second => now;
+// Arbitrary silence
+alert1 =< dac;
+alert2 =< dac;
+2::second => now;
+
+// End-of-alert SAME message, if needed
+if( year >= 1997 )
+{
+  afsk_same_message("NNNN");
+}
