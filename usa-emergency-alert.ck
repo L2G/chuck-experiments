@@ -149,12 +149,18 @@ fun void afsk_same_message1( string message )
 
 fun void afsk_same_message( string message )
 {
-  same1 => dac;
+  // "All frequency components outside 200 to 4000 Hz shall be attenuated by 40
+  // dB or more with respect to the output levels of the mark or space
+  // frequencies."
+  same1 => HPF highpass => LPF lowpass => dac;
+  200 => highpass.freq;
+  4000 => lowpass.freq;
+
+  // Repeat three times
   for (1 => int i; i <= 3; i++)
   {
     afsk_same_message1( message );
   }
-  same1 =< dac;
 }
 
 fun void afsk_bits( int bits[] )
@@ -195,7 +201,7 @@ if( year >= 1976 )
 }
 
 // Play alert
-15::second => now;
+8::second => now;
 
 // Arbitrary silence
 alert1 =< dac;
