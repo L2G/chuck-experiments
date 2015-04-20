@@ -181,12 +181,14 @@ SinOsc alert2;
 
 // The 960 Hz tone has always been a component of the alert.
 960 => alert1.freq;
+0 => alert1.phase;
 alert1 => dac;
 
 // EBS added the 853 Hz tone component in 1963
 if( year >= 1963 )
 {
   853 => alert2.freq;
+  0.5 => alert2.phase; // start out of phase for cleaner start/stop
   alert2 => dac;
 }
 
