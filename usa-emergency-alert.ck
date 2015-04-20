@@ -12,6 +12,8 @@ References:
 https://en.wikipedia.org/w/index.php?title=CONELRAD&oldid=655354761
 https://en.wikipedia.org/w/index.php?title=Emergency_Broadcast_System&oldid=653851954
 https://en.wikipedia.org/w/index.php?title=Specific_Area_Message_Encoding&oldid=653522313
+https://www.law.cornell.edu/cfr/text/47/11.31 (retrieved 2015-04-20)
+http://www.gpo.gov/fdsys/pkg/FR-2012-03-22/pdf/2012-6601.pdf (77 FR 16701)
 
 */
 
