@@ -18,9 +18,9 @@ https://en.wikipedia.org/w/index.php?title=Specific_Area_Message_Encoding&oldid=
 /******* Settings *******/
 
 // Set the year to change the sound of the alert:
-// 1951-1963: CONELRAD (a.k.a. Key Station System)
-// 1963-1997: Emergency Broadcast System
-// 1997-    : Emergency Alert System
+//         year < 1976: Single-tone alert
+// 1976 <= year < 1997: Double-tone alert
+// 1997 <= year       : Double-tone alert with SAME (AFSK) digital messages
 
 2015 => int year;
 
@@ -184,8 +184,8 @@ SinOsc alert2;
 0 => alert1.phase;
 alert1 => dac;
 
-// EBS added the 853 Hz tone component in 1963
-if( year >= 1963 )
+// EBS added the 853 Hz tone component in 1976 (see Wikipedia)
+if( year >= 1976 )
 {
   853 => alert2.freq;
   0.5 => alert2.phase; // start out of phase for cleaner start/stop
@@ -200,7 +200,7 @@ alert1 =< dac;
 alert2 =< dac;
 2::second => now;
 
-// End-of-alert SAME message, if needed
+// End-of-alert SAME message
 if( year >= 1997 )
 {
   afsk_same_message("NNNN");
