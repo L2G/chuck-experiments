@@ -14,6 +14,8 @@ https://en.wikipedia.org/wiki/Emergency_Broadcast_System
 
 */
 
+/******* Settings *******/
+
 // Set the year to change the sound of the alert:
 // 1951-1963: CONELRAD (a.k.a. Key Station System)
 // 1963-1997: Emergency Broadcast System
@@ -21,15 +23,20 @@ https://en.wikipedia.org/wiki/Emergency_Broadcast_System
 
 1963 => int year;
 
+/***** End settings *****/
+
+SinOsc alert1;
+SinOsc alert2;
+
 // The 960 Hz tone has always been a component of the alert.
-SinOsc osc1 => dac;
-960 => osc1.freq;
+960 => alert1.freq;
+alert1 => dac;
 
 // EBS added the 853 Hz tone component in 1963
 if( year >= 1963 )
 {
-  SinOsc osc2 => dac;
-  853 => osc2.freq;
+  853 => alert2.freq;
+  alert2 => dac;
 }
 
 /*
@@ -44,5 +51,7 @@ if( year >= 1997 )
   1 => osc2.gain;
 }
 */
+
+// Play alert
 
 15::second => now;
