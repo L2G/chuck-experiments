@@ -9,9 +9,9 @@ media, so use at your own risk. :-)
 
 References:
 
-https://en.wikipedia.org/wiki/CONELRAD
-https://en.wikipedia.org/wiki/Emergency_Broadcast_System
-https://en.wikipedia.org/wiki/Specific_Area_Message_Encoding
+https://en.wikipedia.org/w/index.php?title=CONELRAD&oldid=655354761
+https://en.wikipedia.org/w/index.php?title=Emergency_Broadcast_System&oldid=653851954
+https://en.wikipedia.org/w/index.php?title=Specific_Area_Message_Encoding&oldid=653522313
 
 */
 
