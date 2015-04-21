@@ -198,6 +198,7 @@ if( year >= 1976 )
   853 => alert2.freq;
   0.5 => alert2.phase; // start out of phase for cleaner start/stop
   alert2 => dac;
+  0.6 => alert1.gain => alert2.gain;
 }
 
 // Play alert
