@@ -181,7 +181,7 @@ fun void afsk_bits( int bits[] )
 // became EAS in 1997.
 if( year >= 1997 )
 {
-  afsk_same_message("ZCZC-XXX-DMO-000000+0000-0000000-XXXXXXXX-");
+  afsk_same_message("ZCZC-EAS-EAN-518003+0045-0510930-WOWO/AM-");
 }
 
 SinOsc alert1;
