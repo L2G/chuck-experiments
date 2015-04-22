@@ -29,6 +29,7 @@ http://www.gpo.gov/fdsys/pkg/FR-2012-03-22/pdf/2012-6601.pdf (77 FR 16701)
 /***** End settings *****/
 
 SinOsc same1;
+0 => same1.gain;
 
 // "All frequency components outside 200 to 4000 Hz shall be attenuated by 40
 // dB or more with respect to the output levels of the mark or space
@@ -187,22 +188,23 @@ if( year >= 1997 )
 SinOsc alert1;
 SinOsc alert2;
 
-// The 960 Hz tone has always been a component of the alert.
-960 => alert1.freq;
-0 => alert1.phase;
-alert1 => dac;
-
-// EBS added the 853 Hz tone component in 1976 (see Wikipedia)
-if( year >= 1976 )
+if( year < 1976 ) // Single tone, 1000 Hz
 {
+  1000 => alert1.freq;
+}
+else // Two tones, 853 & 960 Hz
+{
+  960 => alert1.freq;
   853 => alert2.freq;
   0.5 => alert2.phase; // start out of phase for cleaner start/stop
   alert2 => dac;
   0.6 => alert1.gain => alert2.gain;
 }
+0 => alert1.phase;
+alert1 => dac;
 
 // Play alert
-8::second => now;
+15::second => now;
 
 // Arbitrary silence
 alert1 =< dac;
